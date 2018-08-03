@@ -11,6 +11,8 @@ public class InstagramTest extends InstagramBaseTest {
     public Object[][] validDataProvider() {
         return new Object[][]{
                 { "iteatest@i.ua", "1q2w3e_4r5t" },
+                { "ITEATEST@I.UA", "1q2w3e_4r5t" },
+                {"fdfsdfsdf", "dfdsfsddfsdfsdf"}
 
         };
     }
@@ -21,14 +23,14 @@ public class InstagramTest extends InstagramBaseTest {
         sleep (3000);
         InstagramHomePage instagramHomePage = instagramSingInPage.enter(email, password);
         sleep(2000);
-
+        Assert.assertEquals(instagramHomePage.getCurrentUrl(),"https://www.instagram.com/accounts/login/","страница работает");
         instagramHomePage.like();
         InstagramAntonFoundPage instagramAntonFoundPage = instagramHomePage.SearchEnter();
         sleep(3000);
         sleep(2000);
         instagramAntonFoundPage.likeAndComment();
         sleep(2000);
-        Assert.assertEquals(instagramAntonFoundPage.getCurrentUrl("dfsdf" "fdsfsdf"));
+        Assert.assertEquals(instagramAntonFoundPage.getCurrentUrl(),"sdfsdfsdf");
         WriteCommentPage writeCommentPage = instagramAntonFoundPage.writenewcomment();
 
         writeCommentPage.writecommentToFriend();
